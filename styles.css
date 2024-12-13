@@ -1,12 +1,15 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .containerH {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
-.containerH#controlButtons{
-    justify-content: center;
-    gap: 10px;
+    align-self: stretch;
 }
 
 h1 {

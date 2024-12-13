@@ -13,71 +13,90 @@ function computerChoice(){
             choice = "Scissors";
             break;
     }
-    console.log("The Computer Chose " + choice);
+    updateCpuChoice(choice)
     return choice.toLowerCase();
 }
 
-function userChoice(){
-    let choice = window.prompt("Rock, Paper, or Scissors?", "Make a choice");
-    console.log("You Picked " + choice);
-    return choice.toLowerCase();
+function updateCpuChoice( text ){
+    const choiceDisplay = document.querySelector("#computerChoice");
+    choiceDisplay.textContent = text;
 }
 
-function playGame(){
+function updateScoreBoard() {
+    const userScoreBoard = document.querySelector("#userScore");
+    const cpuScoreBoard = document.querySelector("#cpuScore");
+    userScoreBoard.textContent = "Your Score: " + userScore;
+    cpuScoreBoard.textContent = "CPU Score: " + cpuScore;
+    if(userScore === 5){
+        alert("You are the first to win 5 games. You Win!")
+    } else if(cpuScore === 5) {
+        alert("The CPU beat you to 5 wins. You Lost!")
+    }
+}
+
+function setResult( resultText ){
+    const resultTextBox = document.querySelector("#result");
+    resultTextBox.textContent = resultText;
+}
+
+function playGame(user){
     let cpu = computerChoice();
-    let user = userChoice();
     if(cpu === user){
-        console.log("Tie");
+        setResult("Tie!")
     }else{
         switch(user){
             case "rock":
                 if(cpu === "scissors"){
-                    console.log("You Win!");
+                    setResult("You Win!")
                     userScore += 1;
                 } else {
-                    console.log("You Loose!");
+                    setResult("You Lose!")
                     cpuScore += 1;
                 }
                 break;
             case "paper":
                 if(cpu === "rock"){
-                    console.log("You Win!");
+                    setResult("You Win!")
                     userScore += 1;
                 } else {
-                    console.log("You Loose!");
+                    setResult("You Lose!")
                     cpuScore += 1;
                 }
                 break;
             case "scissors":
                 if(cpu === "paper"){
-                    console.log("You Win!");
+                    setResult("You Win!")
                     userScore += 1;
                 } else {
-                    console.log("You Lose!");
+                    setResult("You Lose!")
                     cpuScore += 1;
                 }
                 break;
         }
     }
+    updateScoreBoard();
 }
 
 let userScore = 0;
 let cpuScore = 0;
 let gamesPlayed = 0;
-let gamePlayed = false;
 
 const userChoiceButtons = document.querySelectorAll(".userChoice");
 userChoiceButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        console.log(e.target.textContent.toLowerCase());
+        playGame(e.target.textContent.toLowerCase());
     });
 })
 
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", () => {
+   cpuScore = 0;
+   userScore = 0;
+   updateScoreBoard();
+   updateCpuChoice('-');
+   setResult('');
+});
 
-
-while( userScore < 5 && cpuScore < 5){
-    playGame()
-}
 
 console.log("After " + gamesPlayed + " games, your score is " + userScore + " and the CPU's score is " + cpuScore);
 
