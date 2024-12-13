@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="RockPaperScissors.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    <script src="RockPaperScissors.js"></script>
+    <h1>Rock Paper Scissors</h1>
+    <div class="containerH">
+        <div id="left">
+            <h2>Your Choice:</h2>
+            <button class="userChoice">Rock</button>
+            <button class="userChoice">Paper</button>
+            <button class="userChoice">Scissors</button>
+            <h3 id="userScore">Your Score: 0</h3>
+        </div>
+        <div id="right">
+            <h2>CPU Choice:</h2>
+            <h2 id="computerChoice">-</h2>
+            <h3 id="cpuScore">CPU Score: 0</h3>
+        </div>
+    </div>
+    <div class="containerH" id="controlButtons">
+        <button id="reset">Reset Scores</button>
+        <button id="nextGame">Next Game</button>
+    </div>
+
 </body>
 </html>

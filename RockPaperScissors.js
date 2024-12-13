@@ -63,9 +63,20 @@ function playGame(){
 
 let userScore = 0;
 let cpuScore = 0;
-let gamesPlayed;
-for (gamesPlayed = 0; gamesPlayed< 5; gamesPlayed++){
-    playGame();
+let gamesPlayed = 0;
+let gamePlayed = false;
+
+const userChoiceButtons = document.querySelectorAll(".userChoice");
+userChoiceButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        console.log(e.target.textContent.toLowerCase());
+    });
+})
+
+
+
+while( userScore < 5 && cpuScore < 5){
+    playGame()
 }
 
 console.log("After " + gamesPlayed + " games, your score is " + userScore + " and the CPU's score is " + cpuScore);

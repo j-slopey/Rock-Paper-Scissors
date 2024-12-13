@@ -1,0 +1,14 @@
+.containerH {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.containerH#controlButtons{
+    justify-content: center;
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+}
